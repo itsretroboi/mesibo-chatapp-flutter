@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_app/providers/app_provider.dart';
 import 'package:flutter_test_app/screens/app_controller.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,6 +16,9 @@ Future<void> main() async {
 class FirstMesiboApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AppController();
+    return MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => AppProvider())],
+      child: AppController(),
+    );
   }
 }

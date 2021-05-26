@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_test_app/screens/verify_otp/verify_otp_screen.dart';
+import 'package:flutter_test_app/screens/auth/verify_otp_screen.dart';
 
 /// Home widget to display video chat option.
 class HomeScreen extends StatelessWidget {

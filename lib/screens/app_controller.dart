@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_test_app/screens/auth/otp_screen.dart';
+import 'package:flutter_test_app/screens/auth/verify_otp_screen.dart';
 import 'package:flutter_test_app/screens/home/home_screen.dart';
-import 'package:flutter_test_app/screens/login/login_screen.dart';
+import 'package:flutter_test_app/screens/auth/login_screen.dart';
+import 'package:flutter_test_app/screens/auth/signup_screen.dart';
 import 'package:flutter_test_app/screens/splash_screen/splash_screen.dart';
-import 'package:flutter_test_app/screens/verify_otp/verify_otp_screen.dart';
 
 class AppController extends StatelessWidget {
+  final Map<String, Widget> routes = {
+    "/": SplashScreenCustom(),
+    "/sign_up": AuthScreen(),
+    "/home": HomeScreen(),
+    "/login": LoginScreen()
+  };
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,11 +23,33 @@ class AppController extends StatelessWidget {
         primaryColor: Colors.blueGrey,
         accentColor: Colors.cyan[600],
       ),
-      routes: {
-        "/": (context) => SplashScreenCustom(),
-        "/login": (context) => LoginScreen(),
-        "/home": (context) => HomeScreen(),
-        "/verify_otp": (context) => PinCodeVerificationScreen()
+      onGenerateRoute: (RouteSettings settings) {
+        Route screen;
+        switch (settings.name) {
+          case "/otp":
+            {
+              Map<String, dynamic> args = settings.arguments;
+              String phoneNumber = args['phoneNumber'];
+              screen = MaterialPageRoute(
+                settings: settings,
+                builder: (_) => OtpScreen(
+                  phoneNumber: phoneNumber,
+                ),
+              );
+              break;
+            }
+          default:
+            {
+              screen = MaterialPageRoute(
+                settings: settings,
+                builder: (BuildContext context) {
+                  return routes[settings.name];
+                },
+              );
+              break;
+            }
+        }
+        return screen;
       },
       debugShowCheckedModeBanner: false,
     );

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "373267210369",
+    "project_id": "hanuman-623a1",
+    "storage_bucket": "hanuman-623a1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:373267210369:android:83283daddadf94691b6d80",
+        "android_client_info": {
+          "package_name": "com.example.flutter_test_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "373267210369-ci0hilepjdh1d46o13eqna3lha97eq0k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZGmR_ksQRDvVLFVTFFJRUcHml9uTe1HE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "373267210369-ci0hilepjdh1d46o13eqna3lha97eq0k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

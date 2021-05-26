@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_test_app/screens/verify_otp/verify_otp_screen.dart';
+import 'package:flutter_test_app/screens/auth/verify_otp_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -12,27 +12,27 @@ class _LoginScreenState extends State<LoginScreen> {
   String actualCode;
 
   Future registerUser(String mobile, BuildContext context) async {
-    FirebaseAuth _auth = FirebaseAuth.instance;
-    _auth.verifyPhoneNumber(
-        phoneNumber: "+85587868278",
-        timeout: Duration(seconds: 60),
-        verificationCompleted: (AuthCredential authCredential) {
-          _auth
-              .signInWithCredential(authCredential)
-              .then((UserCredential result) {
-            Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) =>
-                        PinCodeVerificationScreen(user: result.user)));
-          }).catchError((e) {
-            print('==========');
-            print(e);
-          });
-        },
-        verificationFailed: null,
-        codeSent: null,
-        codeAutoRetrievalTimeout: null);
+    // FirebaseAuth _auth = FirebaseAuth.instance;
+    // _auth.verifyPhoneNumber(
+    //     phoneNumber: "+85587868278",
+    //     timeout: Duration(seconds: 60),
+    //     verificationCompleted: (AuthCredential authCredential) {
+    //       _auth
+    //           .signInWithCredential(authCredential)
+    //           .then((UserCredential result) {
+    //         Navigator.pushReplacement(
+    //             context,
+    //             MaterialPageRoute(
+    //                 builder: (context) =>
+    //                     PinCodeVerificationScreen(user: result.user)));
+    //       }).catchError((e) {
+    //         print('==========');
+    //         print(e);
+    //       });
+    //     },
+    //     verificationFailed: null,
+    //     codeSent: null,
+    //     codeAutoRetrievalTimeout: null);
   }
 
   @override

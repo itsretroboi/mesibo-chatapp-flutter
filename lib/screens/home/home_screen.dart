@@ -95,7 +95,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         userMail = "sopheak@mail.com";
         break;
       case "Richard":
-        userMail = "richard@mail.com";
+        userMail = "techemailfortesting@mail.com";
         break;
       case "Bo Park":
         userMail = "bopark@mail.com";

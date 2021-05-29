@@ -21,7 +21,7 @@ class AuthUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> specialNumbers = [
-      //Tester
+      //Bong Sopheak
       "+85561696308",
       //Bong Prak
       "+85560551168",
@@ -30,10 +30,9 @@ class AuthUI extends StatelessWidget {
       //Dara
       "+85587868278",
       //Bong Setha
-      "+85512955408"
-          //Bong Sopheak
-          //Bong Toni
-          "+855979796111"
+      "+85512955408",
+      //Bong Toni
+      "+855979796111"
     ];
     void _showToast(BuildContext context, String alertMsg) {
       final scaffold = ScaffoldMessenger.of(context);

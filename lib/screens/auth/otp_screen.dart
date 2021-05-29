@@ -55,6 +55,7 @@ class _OtpScreenState extends State<OtpScreen> {
   }
 
   void _verifyPhoneAuth(String phoneNumber, BuildContext context) {
+    print("Verify Phone Number");
     _auth.verifyPhoneNumber(
         phoneNumber: phoneNumber,
         timeout: Duration(seconds: 60),

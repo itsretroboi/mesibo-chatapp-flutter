@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_test_app/constants/constants.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() => runApp(MyApp());
 
@@ -45,6 +47,10 @@ final Map users = {
       "SoPheak",
       "fac2e872dc16eedb92bb4c68c2b896adc4bac5b4e94c6debb32c004",
       "sopheak@mail.com"),
+  'Vansen': ScreenArguments(
+      "Vansen",
+      "4b138a5060ceec88b4c17cc91a084d0c66da2e4a427e110c7ee9932dfd3	",
+      "vansenhengmeanrith@gmail.com"),
 };
 
 class MyApp extends StatefulWidget {
@@ -89,15 +95,19 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   }
 
   void _onEvent(Object event) {
-    setState(() {
-      _mesiboStatus = "" + event.toString();
-    });
+    if (mounted) {
+      setState(() {
+        _mesiboStatus = "" + event.toString();
+      });
+    }
   }
 
   void _onError(Object error) {
-    setState(() {
-      _mesiboStatus = 'Mesibo status: unknown.';
-    });
+    if (mounted) {
+      setState(() {
+        _mesiboStatus = 'Mesibo status: unknown.';
+      });
+    }
   }
 
   @override
@@ -108,6 +118,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
   }
 
   Future<void> verify({code: String}) async {
+    final prefs = await SharedPreferences.getInstance();
     String username = "";
     switch (code) {
       case "+85561696308":
@@ -125,6 +136,9 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
       case "+85516205337":
         username = "Richard";
         break;
+      case "+85517701715":
+        username = "Vansen";
+        break;
       default:
         username = "Setha";
     }
@@ -136,6 +150,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
             loggedUser["loggedUser"], loggedUser["token"], loggedUser["mail"]));
     await platform.invokeMethod(
         "loginUser", {'loggedUser': loggedUser, 'allUsers': allUsers});
+    prefs.setString(USER_NAME, loggedUser["loggedUser"]);
   }
 
   @override

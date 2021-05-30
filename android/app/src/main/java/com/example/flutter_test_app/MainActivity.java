@@ -56,7 +56,7 @@ public class MainActivity extends FlutterActivity implements Mesibo.ConnectionLi
     private String mMessage = null;
 
     private String remoteUser = "";
-    private String[] users = { "Dara", "Richard", "Bo Park", "Ly Setha", "Khun Sopheak", "Toni" };
+    private String[] users = { "Dara", "Richard", "Bo Park", "Ly Setha", "Khun Sopheak", "Toni", "Vansen" };
 
     @Override
     public void configureFlutterEngine(@NonNull FlutterEngine flutterEngine) {

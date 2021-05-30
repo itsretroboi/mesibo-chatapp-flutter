@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_app/screens/auth/otp_screen.dart';
-import 'package:flutter_test_app/screens/auth/verify_otp_screen.dart';
 import 'package:flutter_test_app/screens/home/home_screen.dart';
 import 'package:flutter_test_app/screens/auth/login_screen.dart';
 import 'package:flutter_test_app/screens/auth/signup_screen.dart';

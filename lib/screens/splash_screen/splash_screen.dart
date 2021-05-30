@@ -48,7 +48,10 @@ class _SplashScreenCustomState extends State<SplashScreenCustom> {
     if (validUser.isEmpty) {
       Navigator.of(context)
           .pushNamedAndRemoveUntil('/sign_up', (route) => false);
-    } else {
+      // Until here
+      //   Navigator.of(context).pushNamedAndRemoveUntil('/otp', (route) => false,
+      //       arguments: {"phoneNumber": "+85516205337"});
+      // } else {
       // _auth.verifyPhoneNumber(
       //     phoneNumber: phoneNumber,
       //     timeout: Duration(seconds: 60),

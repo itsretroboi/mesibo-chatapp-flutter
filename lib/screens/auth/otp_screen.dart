@@ -2,8 +2,9 @@ import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_test_app/constants/constants.dart';
 import 'package:flutter_test_app/screens/auth/verify_otp_screen.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 class OtpScreen extends StatefulWidget {
@@ -32,6 +33,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   void _signInPhoneAuth(String _smsCode) async {
     try {
+      final prefs = await SharedPreferences.getInstance();
       final AuthCredential authCredential = PhoneAuthProvider.credential(
         verificationId: _verificationId,
         smsCode: _smsCode,
@@ -43,11 +45,11 @@ class _OtpScreenState extends State<OtpScreen> {
                 builder: (context) => MyApp(
                       phoneNumber: widget.phoneNumber,
                     )));
+        prefs.setString(PHONE_NUMBER, widget.phoneNumber);
       }).catchError((e) {
         print('==========');
         print(e);
       });
-
       print("Successfully signed in}");
     } catch (e) {
       print("Failed to sign in: " + e.toString());
@@ -160,6 +162,13 @@ class _OtpScreenState extends State<OtpScreen> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
             child: PinInputTextField(
+              decoration: UnderlineDecoration(
+                  textStyle: TextStyle(
+                      fontFamily: 'Roboto',
+                      color: Color(0xFF333808),
+                      fontSize: 24),
+                  colorBuilder: PinListenColorBuilder(
+                      Color(0xFF333808), Color(0xFF333808))),
               pinLength: 6,
               controller: _smsVerificationCode,
               onSubmit: (value) {
